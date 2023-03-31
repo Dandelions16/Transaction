@@ -20,7 +20,7 @@ public class RekeningService {
         return rekeningRepo.findAll();
     }
 
-    private void transfer(Integer norek1,Integer norek2, double amount){
+    public void transfer(Integer norek1,Integer norek2, double amount){
         RekeningEntity rekening1 = rekeningRepo.findByNoRek(norek1);
         if (rekening1 == null){
             throw new RuntimeException("Norek 1 not valid");
