@@ -1,5 +1,6 @@
 package com.spring.transaction.controller;
 
+import com.spring.transaction.dto.TransferRequest;
 import com.spring.transaction.model.entity.RekeningEntity;
 import com.spring.transaction.service.RekeningService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class RekeningController {
     public ResponseEntity<RekeningEntity> create(@RequestBody RekeningEntity rekening){
         rekeningService.create(rekening);
         return ResponseEntity.ok(rekening);
+    }
+    @PostMapping("/transfer")
+    public void transfer(@RequestBody TransferRequest transfer){
+        rekeningService.transfer(transfer.getNorek1(),transfer.getNorek2(),transfer.getAmount());
     }
 }
